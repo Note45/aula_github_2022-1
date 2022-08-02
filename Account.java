@@ -1,25 +1,21 @@
 import java.io.Console;
 
 public class Account {
-    public enum AccountType {Corrente, Poupança}
-    public static int AccountIDCounter = 0;
-
     public int ID;
     public double Money;
     public String CompleteName;
-    public AccountType Type;
+    public String Type;
     public Boolean Blocked;
 
-    public Account
-    (String name, AccountType type){
-        
+    public void Create(String name, String type, int id) {
         this.CompleteName = name;
+        this.Blocked = false;
         this.Type = type;
-        this.ID = ++AccountIDCounter;
+        this.ID = id;
+        this.Money = 0.0;
     }
 
-    public void Transfer(Account dest, double value)
-    {
+    public void Transfer(Account dest, double value) {
         value = Math.abs(value);
 
         if (Money >= value && dest.Deposit(value)){
@@ -27,7 +23,8 @@ public class Account {
         }
     }
 
-    public Boolean Deposit(double value){
+    public Boolean Deposit(double value)
+    {
         value = Math.abs(value);
 
         if (Blocked)
@@ -40,15 +37,18 @@ public class Account {
         return true;
     }
 
-    public void SetAccountStatus(Boolean blocked){
+    public void SetAccountStatus(Boolean blocked)
+    {
         this.Blocked = blocked;
     }
 
-    private void IncreaseMoney(double value){
+    private void IncreaseMoney(double value)
+    {
         Money += value;
     }
 
-    private void DecreaseMoney(double value){
+    private void DecreaseMoney(double value)
+    {
         Money -= value;
     }
 }

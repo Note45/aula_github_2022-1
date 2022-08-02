@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
+
     private String title;
     private List<String> options;
     private List<Account> accounts = new ArrayList<Account>();

@@ -22,7 +22,7 @@ public class Menu {
 	}
 
 	public static Menu MainMenu() {
-		return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta"));
+		return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta", "Excluir conta"));
 	}
 
 	public int getSelection() {
@@ -98,6 +98,18 @@ public class Menu {
 								System.out.println("Saldo atual da conta: " + account.Money);
 							}
     				}
+					break;
+					case 5:
+						inputId = new Scanner(System.in);
+						System.out.println("Digite o id da conta que deseja excluir: ");
+						accountId = inputId.nextInt();
+						for (Account account : this.accounts) {
+							int aux = account.ID;
+							if (account.ID == accountId) {
+								accounts.remove(account);
+								System.out.printf("\n"+ "A conta de ID: %d foi excluida com sucesso!",aux);
+								}		
+					}
 					break;
 					default:
 						System.out.println("Opcao errada!");

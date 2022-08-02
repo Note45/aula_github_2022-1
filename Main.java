@@ -11,4 +11,8 @@ public class Main {
 		System.out.println("Fim");
 	}
 
+	public void removeAccount(Account account){
+		_accounts.remove(account);
+	}
+
 }

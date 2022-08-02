@@ -97,6 +97,16 @@ public class Menu {
                         } else System.out.printf("\n" + "Conta nao encontrada!");
                         break;
 
+                    case 5:
+                        int aux=0;
+                        for (Account account : this.accounts) {
+                            if (account.Blocked == true) {
+                                aux++;
+                            }
+                        }
+                        System.out.printf("\n" + "%d Contas estao bloqueadas!", aux);
+                        break;
+
                     default:
                         System.out.println("Opcao errada!");
                 }
@@ -127,6 +137,7 @@ public class Menu {
         }
         return null;
     }
+    
 
     public static void WritePopUp(String message) {
         ClearConsole();

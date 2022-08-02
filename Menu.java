@@ -23,7 +23,10 @@ public class Menu {
 
     public static Menu MainMenu() {
 
-        return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta", "Excluir conta", "Bloquear conta", "Desbloquear conta"));
+        return new Menu("Menu Principal", 
+            Arrays.asList("Sair", "Criar Conta", "Depositar na conta", 
+                           "Sacar da conta", "Excluir conta", "Bloquear conta", 
+                           "Desbloquear conta", "Tranferência entre contas"));
 
     }
 
@@ -141,6 +144,25 @@ public class Menu {
                         } else System.out.printf("\n" + "Conta nao encontrada!");
                         break;
 
+                    case 8:
+                        input = new Scanner(System.in);
+                        System.out.println("Digite o id da conta que vai receber a transferencia: ");
+                        accountId = input.nextInt();
+                        System.out.println("Digite o valor da transferência(Ex: 100.10): ");
+                        double transferValue = input.nextDouble();
+
+                        for (Account account : this.accounts) {
+                            if (account.ID == accountId) {
+                                account.Transfer(account, transferValue);
+
+                                System.out.println("\n" + "Tranferência realizada com sucesso!");
+                                System.out.println("Saldo atual da conta: " + account.Money);
+                            }
+                        }
+                    break;
+                    case 9:
+                        
+                    break;
                     default:
                         System.out.println("Opcao errada!");
                 }

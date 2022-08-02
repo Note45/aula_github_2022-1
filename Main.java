@@ -1,8 +1,10 @@
 import java.io.Console;
-import java.nio.channels.ClosedSelectorException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
+	private static List<Account> _accounts = new ArrayList<Account>();
 
 	public static void main(String[] args) {
 		Menu mainMenu = Menu.MainMenu();

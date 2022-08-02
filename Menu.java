@@ -1,5 +1,8 @@
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,6 +18,10 @@ public class Menu {
 	public Menu(String title, List<String> options) {
 		this.title = title;
 		this.options = options;
+	}
+
+	public static Menu MainMenu() {
+		return new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Operacoes", "Sair"));
 	}
 
 	public int getSelection() {
@@ -35,12 +42,28 @@ public class Menu {
 			catch (NumberFormatException e) {
 				op =0;
 			}
+
+			ClearConsole();
+
 			if (op>=i){
 				System.out.println("Opcao errada!");
+				System.console().readLine();
+				ClearConsole();
 				op=0;
 			}
 
 		}
 		return op;
+	}
+
+	private static void ClearConsole(){
+		System.out.print("\033\143");
+	}
+
+	public static void WritePopUp(String message){
+		ClearConsole();
+        System.out.println(message);
+		System.console().readLine();
+		ClearConsole();
 	}
 }

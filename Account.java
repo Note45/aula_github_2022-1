@@ -37,6 +37,20 @@ public class Account {
         return true;
     }
 
+    public Boolean Withdraw(double value)
+    {
+        value = Math.abs(value);
+
+        if (Blocked)
+        {
+            System.out.println("Conta bloqueada!");
+            return false;
+        }
+
+        DecreaseMoney(value);
+        return true;
+    }
+
     public void SetAccountStatus(Boolean blocked)
     {
         this.Blocked = blocked;

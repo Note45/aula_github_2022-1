@@ -22,7 +22,9 @@ public class Menu {
 	}
 
 	public static Menu MainMenu() {
-		return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta", "Bloquear conta"));
+
+		return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta", "Excluir conta", "Bloquear conta"));
+
 	}
 
 	public int getSelection() {
@@ -49,9 +51,9 @@ public class Menu {
 					case 2:
 						Scanner input = new Scanner(System.in);
 						System.out.println("Nome completo do titular: ");
-						String accountName = input.next();
+						String accountName = input.nextLine();
 						System.out.println("Tipo[Corrente, Poupanca]: ");
-						String accountType = input.next();
+						String accountType = input.nextLine();
 
 						int newAccountId = this.accounts.size();
 						
@@ -100,16 +102,28 @@ public class Menu {
     				}
 					break;
 					case 6:
-						inputId = new Scanner(System.in);
+            inputId = new Scanner(System.in);
 						System.out.println("Digite o id da conta que deseja bloquear: ");
+            accountId = inputId.nextInt();
+            for (Account account : this.accounts) {
+							if (account.ID == accountId) {
+                account.SetAccountStatus(true);
+								System.out.printf("\n"+ "A conta de ID: %d foi bloqueada com sucesso!", accountId);
+								}else{
+									System.out.println("Nenhuma conta encontrada para o id informado!");
+                }
+          }
+					break;  
+					case 5:
+						inputId = new Scanner(System.in);
+						System.out.println("Digite o id da conta que deseja excluir: ");
 						accountId = inputId.nextInt();
 						for (Account account : this.accounts) {
 							int aux = account.ID;
 							if (account.ID == accountId) {
-								account.SetAccountStatus(true);
-								System.out.printf("\n"+ "A conta de ID: %d foi bloqueada com sucesso!", aux);
-								}else{
-									System.out.println("Nenhuma conta encontrada para o id informado!");
+								accounts.remove(account);
+								System.out.printf("\n"+ "A conta de ID: %d foi excluida com sucesso!",aux);
+
 								}		
 					}
 					break;

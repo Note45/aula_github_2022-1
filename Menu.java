@@ -23,7 +23,7 @@ public class Menu {
 
     public static Menu MainMenu() {
 
-        return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta", "Excluir conta", "Bloquear conta", "Desbloquear conta"));
+        return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta", "Excluir conta", "Bloquear conta", "Desbloquear conta", "Numero de Contas Bloqueadas"));
 
     }
 
@@ -139,6 +139,16 @@ public class Menu {
                             conta.SetAccountStatus(false);
                             System.out.printf("\n" + "A conta de ID: %d foi desbloqueada com sucesso!", conta.ID);
                         } else System.out.printf("\n" + "Conta nao encontrada!");
+                        break;
+
+                    case 8:
+                        int aux = 0;
+                        for (Account account : this.accounts) {
+                            if (account.Blocked == true) {
+                                aux++;
+                            }
+                        }
+                        System.out.printf("\n" + "%d Contas estao bloqueadas!", aux);
                         break;
 
                     default:

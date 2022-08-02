@@ -22,7 +22,7 @@ public class Menu {
 	}
 
 	public static Menu MainMenu() {
-		return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta"));
+		return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta", "Bloquear conta"));
 	}
 
 	public int getSelection() {
@@ -98,6 +98,20 @@ public class Menu {
 								System.out.println("Saldo atual da conta: " + account.Money);
 							}
     				}
+					break;
+					case 6:
+						inputId = new Scanner(System.in);
+						System.out.println("Digite o id da conta que deseja bloquear: ");
+						accountId = inputId.nextInt();
+						for (Account account : this.accounts) {
+							int aux = account.ID;
+							if (account.ID == accountId) {
+								account.SetAccountStatus(true);
+								System.out.printf("\n"+ "A conta de ID: %d foi bloqueada com sucesso!", aux);
+								}else{
+									System.out.println("Nenhuma conta encontrada para o id informado!");
+								}		
+					}
 					break;
 					default:
 						System.out.println("Opcao errada!");

@@ -49,9 +49,9 @@ public class Menu {
 					case 2:
 						Scanner input = new Scanner(System.in);
 						System.out.println("Nome completo do titular: ");
-						String accountName = input.next();
+						String accountName = input.nextLine();
 						System.out.println("Tipo[Corrente, Poupanca]: ");
-						String accountType = input.next();
+						String accountType = input.nextLine();
 
 						int newAccountId = this.accounts.size();
 						

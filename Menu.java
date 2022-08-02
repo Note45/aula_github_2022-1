@@ -22,7 +22,7 @@ public class Menu {
 	}
 
 	public static Menu MainMenu() {
-		return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta"));
+		return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta"));
 	}
 
 	public int getSelection() {
@@ -79,6 +79,22 @@ public class Menu {
 								account.Deposit(depositValue);
 
 								System.out.println("\n"+ "Deposito realizado com sucesso!");
+								System.out.println("Saldo atual da conta: " + account.Money);
+							}
+    				}
+					break;
+					case 4:
+						Scanner inputIdToWithdraw = new Scanner(System.in);
+						System.out.println("Digite o id da conta: ");
+						int accountIdToWithDraw = inputIdToWithdraw.nextInt();
+						System.out.println("Digite o valor do saque(Ex: 100.10): ");
+						double withdrawValue = inputIdToWithdraw.nextDouble();
+
+						for (Account account : this.accounts) {
+							if (account.ID == accountIdToWithDraw) {
+								account.Withdraw(withdrawValue);
+
+								System.out.println("\n"+ "Saque realizado com sucesso!");
 								System.out.println("Saldo atual da conta: " + account.Money);
 							}
     				}

@@ -92,9 +92,9 @@ public class Menu {
                         Account conta = getAccountById(contaId);
                         if (conta != null) {
                             conta.SetAccountStatus(false);
-                            System.out.printf("\n" + "A conta de ID: %d foi bloqueada com sucesso!", conta.ID);
+                            System.out.printf("\n" + "A conta de ID: %d foi desbloqueada com sucesso!", conta.ID);
                         } else System.out.printf("\n" + "Conta nao encontrada!");
-
+                        break;
 
                     default:
                         System.out.println("Opcao errada!");

@@ -9,7 +9,7 @@ public class Account {
 
     public void Create(String name, String type, int id) {
         this.CompleteName = name;
-        this.Blocked = false;
+        this.Blocked = true;
         this.Type = type;
         this.ID = id;
         this.Money = 0.0;

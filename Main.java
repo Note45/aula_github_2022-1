@@ -1,11 +1,15 @@
+import java.io.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
-
 	public static void main(String[] args) {
-		Menu mainMenu =  new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Operacoes"));
-		System.out.println(mainMenu.getSelection() + "foi selecionada");
-		System.out.println("Fim");
-	}
+		Menu mainMenu = Menu.MainMenu();
+		int op = -1;
 
+		while (true){
+			op = mainMenu.getSelection();
+		}
+	}	
 }

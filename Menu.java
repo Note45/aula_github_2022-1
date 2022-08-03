@@ -25,8 +25,8 @@ public class Menu {
 
         return new Menu("Menu Principal", 
             Arrays.asList("Sair", "Criar Conta", "Depositar na conta", 
-                           "Sacar da conta", "Excluir conta", "Bloquear conta", 
-                           "Desbloquear conta", "Tranferência entre contas"));
+                    "Sacar da conta", "Excluir conta", "Bloquear conta", "Desbloquear conta", 
+                    "Numero de Contas Bloqueadas", "Tranferência entre contas", "Extrato da conta"));
 
     }
 
@@ -145,6 +145,16 @@ public class Menu {
                         break;
 
                     case 8:
+                        int aux = 0;
+                        for (Account account : this.accounts) {
+                            if (account.Blocked == true) {
+                                aux++;
+                            }
+                        }
+                        System.out.printf("\n" + "%d Contas estao bloqueadas!", aux);
+                        break;
+                    
+                    case 9:
                         input = new Scanner(System.in);
                         System.out.println("Digite o id da conta que vai receber a transferencia: ");
                         accountId = input.nextInt();
@@ -160,8 +170,14 @@ public class Menu {
                             }
                         }
                     break;
-                    case 9:
+                    case 10:
+                        input = new Scanner(System.in);
+                        System.out.println("Digite o id da conta : ");
+                        accountId = input.nextInt();
                         
+                        for (Account account : this.accounts) 
+                            if (account.ID == accountId) 
+                                account.Statement();
                     break;
                     default:
                         System.out.println("Opcao errada!");

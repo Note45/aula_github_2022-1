@@ -23,10 +23,12 @@ public class Menu {
 
     public static Menu MainMenu() {
 
+
         return new Menu("Menu Principal", 
             Arrays.asList("Sair", "Criar Conta", "Depositar na conta", 
                     "Sacar da conta", "Excluir conta", "Bloquear conta", "Desbloquear conta", 
                     "Numero de Contas Bloqueadas", "Tranferência entre contas", "Extrato da conta"));
+
 
     }
 
@@ -153,6 +155,7 @@ public class Menu {
                         }
                         System.out.printf("\n" + "%d Contas estao bloqueadas!", aux);
                         break;
+
                     
                     case 9:
                         input = new Scanner(System.in);
@@ -169,7 +172,7 @@ public class Menu {
                                 System.out.println("Saldo atual da conta: " + account.Money);
                             }
                         }
-                    break;
+                        break;
                     case 10:
                         input = new Scanner(System.in);
                         System.out.println("Digite o id da conta : ");
@@ -178,7 +181,7 @@ public class Menu {
                         for (Account account : this.accounts) 
                             if (account.ID == accountId) 
                                 account.Statement();
-                    break;
+                        break;
                     default:
                         System.out.println("Opcao errada!");
                 }

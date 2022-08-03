@@ -23,7 +23,12 @@ public class Menu {
 
     public static Menu MainMenu() {
 
-        return new Menu("Menu Principal", Arrays.asList("Sair", "Criar Conta", "Depositar na conta", "Sacar da conta", "Excluir conta", "Bloquear conta", "Desbloquear conta", "Numero de Contas Bloqueadas"));
+
+        return new Menu("Menu Principal", 
+            Arrays.asList("Sair", "Criar Conta", "Depositar na conta", 
+                    "Sacar da conta", "Excluir conta", "Bloquear conta", "Desbloquear conta", 
+                    "Numero de Contas Bloqueadas", "Tranferência entre contas", "Extrato da conta"));
+
 
     }
 
@@ -151,6 +156,32 @@ public class Menu {
                         System.out.printf("\n" + "%d Contas estao bloqueadas!", aux);
                         break;
 
+                    
+                    case 9:
+                        input = new Scanner(System.in);
+                        System.out.println("Digite o id da conta que vai receber a transferencia: ");
+                        accountId = input.nextInt();
+                        System.out.println("Digite o valor da transferência(Ex: 100.10): ");
+                        double transferValue = input.nextDouble();
+
+                        for (Account account : this.accounts) {
+                            if (account.ID == accountId) {
+                                account.Transfer(account, transferValue);
+
+                                System.out.println("\n" + "Tranferência realizada com sucesso!");
+                                System.out.println("Saldo atual da conta: " + account.Money);
+                            }
+                        }
+                        break;
+                    case 10:
+                        input = new Scanner(System.in);
+                        System.out.println("Digite o id da conta : ");
+                        accountId = input.nextInt();
+                        
+                        for (Account account : this.accounts) 
+                            if (account.ID == accountId) 
+                                account.Statement();
+                        break;
                     default:
                         System.out.println("Opcao errada!");
                 }
